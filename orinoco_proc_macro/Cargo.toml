@@ -1,0 +1,19 @@
+[package]
+name = "orinoco_proc_macro"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+proc-macro = true
+
+
+[dependencies]
+
+quote = "1.0"
+proc-macro2 = "*"
+anyhow = "*"
+convert_case = "0.11.0"
+
+[dependencies.syn]
+version = "2.0"
+features = ["full"]
