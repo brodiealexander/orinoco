@@ -2,6 +2,11 @@
 name = "orinoco"
 version = "0.1.0"
 edition = "2024"
+license-file = "LICENSE"
+description = "Utility for working with Rust's core numeric types. Convenient and fast conversions between core types and other core types, core types and bytes, and vectors of core types and bytes"
+homepage = "https://github.com/brodiealexander/orinoco"
+repository = "https://github.com/brodiealexander/orinoco"
+readme = "README.md"
 
 
 [dependencies]
