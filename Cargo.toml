@@ -10,5 +10,5 @@ readme = "README.md"
 
 
 [dependencies]
-orinoco_proc_macro = { path = "orinoco_proc_macro", version = "0.1.0" }
+orinoco_proc_macro = { path = "orinoco_proc_macro", version = "0.1.1" }
 anyhow = "1.0.104"
