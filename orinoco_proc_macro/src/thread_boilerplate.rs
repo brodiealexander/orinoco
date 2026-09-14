@@ -13,7 +13,7 @@ use syn::{
     token::Comma,
 };
 
-use crate::debugfile;
+// use crate::debugfile;
 
 #[derive(Debug, Clone)]
 pub struct OrcDerivedIDs {
@@ -102,9 +102,9 @@ pub fn parse_rpc_description(cmd_name: String, tree: &ItemTrait) -> InterfaceDes
         // writeln!(debug, "{:?}", item.into_token_stream()).unwrap();
     }
     let (generic_impl, generic_ty, generic_where) = tree.generics.split_for_impl();
-    let mut dbgf = debugfile("__constparams.txt").unwrap();
-    writeln!(dbgf, "{}", generic_ty.to_token_stream().to_string()).unwrap();
-    dbgf.flush().unwrap();
+    // let mut dbgf = debugfile("__constparams.txt").unwrap();
+    // writeln!(dbgf, "{}", generic_ty.to_token_stream().to_string()).unwrap();
+    // dbgf.flush().unwrap();
     // let punct_ids: Punctuated<Ident, Comma> = Punctuated::<Ident, Comma>::parse_separated_nonempty
     //     .parse2(generic_ty.to_token_stream())
     //     .unwrap();
@@ -117,7 +117,7 @@ pub fn parse_rpc_description(cmd_name: String, tree: &ItemTrait) -> InterfaceDes
     }
 
     for ty in &generic_ids {
-        writeln!(dbgf, "{}", ty.to_token_stream().to_string()).unwrap();
+        // writeln!(dbgf, "{}", ty.to_token_stream().to_string()).unwrap();
     }
     let generics_present = !tree.generics.to_token_stream().is_empty();
     let phantom = if generics_present {

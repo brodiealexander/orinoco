@@ -13,24 +13,24 @@ use syn::parse_macro_input;
 mod boilerplate;
 mod thread_boilerplate;
 
-fn dump(path: impl ToString, txt: impl std::fmt::Debug) -> anyhow::Result<()> {
-    let mut f = OpenOptions::new()
-        .write(true)
-        .create(true)
-        .truncate(true)
-        .open(&path.to_string())?;
-    writeln!(f, "{txt:#?}")?;
-    f.flush()?;
-    Ok(())
-}
+// fn dump(path: impl ToString, txt: impl std::fmt::Debug) -> anyhow::Result<()> {
+//     // let mut f = OpenOptions::new()
+//     //     .write(true)
+//     //     .create(true)
+//     //     .truncate(true)
+//     //     .open(&path.to_string())?;
+//     // writeln!(f, "{txt:#?}")?;
+//     // f.flush()?;
+//     Ok(())
+// }
 
-fn debugfile(path: impl ToString) -> anyhow::Result<std::fs::File> {
-    Ok(OpenOptions::new()
-        .write(true)
-        .create(true)
-        .truncate(true)
-        .open(&path.to_string())?)
-}
+// fn debugfile(path: impl ToString) -> anyhow::Result<std::fs::File> {
+//     Ok(OpenOptions::new()
+//         .write(true)
+//         .create(true)
+//         .truncate(true)
+//         .open(&path.to_string())?)
+// }
 
 // pub trait OrinocoRpc {}
 
@@ -66,9 +66,9 @@ fn emit_enum(name: String, description: &Vec<ProcDescriptor>) -> proc_macro2::To
     let total =
         format!("enum {req_name} {{ {req_variants} }}\nenum {rsp_name} {{ {rsp_variants} }}\n");
 
-    let mut debug = debugfile("__emit_enum.txt").unwrap();
-    writeln!(debug, "{total}").unwrap();
-    debug.flush().unwrap();
+    // let mut debug = debugfile("__emit_enum.txt").unwrap();
+    // writeln!(debug, "{total}").unwrap();
+    // debug.flush().unwrap();
 
     // todo!()
     parse_str(&total).unwrap()
@@ -80,10 +80,10 @@ pub fn orinoco_thread_rpc(
     mut item: proc_macro::TokenStream,
 ) -> proc_macro::TokenStream {
     let item_tree = item.clone();
-    dump("__proc_macro_dump_1_rawtt.txt", attr.clone()).unwrap();
+    // dump("__proc_macro_dump_1_rawtt.txt", attr.clone()).unwrap();
     let tree = parse_macro_input!(item_tree as ItemTrait);
 
-    let mut debug = debugfile("__orc_debug.rs").unwrap();
+    // let mut debug = debugfile("__orc_debug.rs").unwrap();
 
     let cmd_name = attr.to_string();
 
@@ -102,7 +102,7 @@ pub fn orinoco_thread_rpc(
     item.extend(tcp_shit);
     item.extend(tcp_endpoint_shit);
 
-    writeln!(debug, "{}", item.to_string()).unwrap();
+    // writeln!(debug, "{}", item.to_string()).unwrap();
     item
 
     // writeln!(debug, "{}", enum_shit.to_string()).unwrap();
@@ -163,10 +163,10 @@ pub fn orinoco_rpc(
     mut item: proc_macro::TokenStream,
 ) -> proc_macro::TokenStream {
     let item_tree = item.clone();
-    dump("__proc_macro_dump_1_rawtt.txt", item.clone()).unwrap();
+    // dump("__proc_macro_dump_1_rawtt.txt", item.clone()).unwrap();
     let tree = parse_macro_input!(item_tree as ItemTrait);
 
-    let mut debug = debugfile("__orc_debug.rs").unwrap();
+    // let mut debug = debugfile("__orc_debug.rs").unwrap();
 
     let ids = boilerplate::OrcDerivedIDs::new(tree.ident.to_string()).unwrap();
     // let temp_tt = boilerplate::tcp_client_boilerplate(&ids);
@@ -181,7 +181,7 @@ pub fn orinoco_rpc(
     item.extend(tcp_shit);
     item.extend(tcp_endpoint_shit);
 
-    writeln!(debug, "{}", item.to_string()).unwrap();
+    // writeln!(debug, "{}", item.to_string()).unwrap();
     item
 
     // writeln!(debug, "{}", enum_shit.to_string()).unwrap();
