@@ -2,6 +2,11 @@
 name = "orinoco_proc_macro"
 version = "0.1.0"
 edition = "2024"
+license-file = "LICENSE"
+description = "Utility for Deriving RPC (Remote Procedure Call) boilerplate for calling trait methods on a remote object"
+homepage = "https://github.com/brodiealexander/orinoco"
+repository = "https://github.com/brodiealexander/orinoco"
+readme = "README.md"
 
 [lib]
 proc-macro = true
