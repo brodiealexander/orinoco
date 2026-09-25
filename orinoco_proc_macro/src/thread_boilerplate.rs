@@ -588,9 +588,9 @@ pub fn tcp_endpoint_boilerplate(
                         // let Ok(_) = inner_result else { panic!() };
                     }
                     if let Some(name) = name {
-                        println!("ThreadRPC Server <{name}>: Client hung up");
+                        // println!("ThreadRPC Server <{name}>: Client hung up");
                     } else {
-                        println!("ThreadRPC Server: Client hung up");
+                        // println!("ThreadRPC Server: Client hung up");
                     }
                 });
                 // orinoco::OrinocoEndpoint(std::sync::Arc::new(Box::new(launch_fn)))
